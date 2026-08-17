@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code to Career | Gamified Coding Platform</title>
+  <meta name="description" content="Learn programming concepts from code to career in this interactive gamified leveling environment.">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header>
+    <div class="header-left">
+      <h1 class="logo">Code to <span>Career</span></h1>
+      <div id="rankBadge" class="rank-badge">Novice Apprentice</div>
+    </div>
+    
+    <div class="header-right">
+      <div class="xp-container">
+        <span class="xp-label">XP:</span>
+        <div class="xp-bar-wrapper">
+          <div id="xpBarFill" class="xp-bar-fill"></div>
+        </div>
+        <span id="xpValue" class="xp-value">0 / 100</span>
+      </div>
+      
+      <button id="soundToggle" class="sound-toggle" aria-label="Toggle sound effect">
+        🔊
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Sidebar: Path Map & Badges -->
+    <aside class="sidebar">
+      <div>
+        <h2 class="sidebar-section-title">Career Pathway</h2>
+        <nav id="pathMap" class="path-map">
+          <!-- Level nodes will be injected here dynamically -->
+        </nav>
+      </div>
+
+      <div>
+        <h2 class="sidebar-section-title">Unlocked Badges</h2>
+        <div id="badgesGrid" class="badges-grid">
+          <!-- Badges will be injected here dynamically -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Interactive Workspace -->
+    <main class="workspace">
+      
+      <!-- Top Half: Concepts & Active Tasks -->
+      <section class="concept-panel">
+        <div class="concept-details">
+          <div id="videoContainer" class="video-container" style="display: none;"></div>
+          <h2 id="conceptTitle" class="concept-title">Level Loading...</h2>
+          <p id="conceptBody" class="concept-body">Loading details and syllabus guide...</p>
+        </div>
+        
+        <div class="task-list-panel">
+          <h3 class="sidebar-section-title" style="margin-bottom: 0.5rem;">Current Goal</h3>
+          <div id="taskList" class="task-list">
+            <!-- Active tasks injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Half: Editor & Terminal -->
+      <section class="editor-terminal-split">
+        
+        <!-- Editor Side -->
+        <div class="editor-container">
+          <div class="panel-header">
+            <span class="panel-title">Python Code Editor</span>
+            <div class="editor-actions">
+              <button id="resetBtn" class="btn btn-secondary" title="Reset to template code">Reset</button>
+              <button id="runBtn" class="btn btn-primary" title="Execute current script (Ctrl + Enter)">▶ Run Code</button>
+              <button id="submitBtn" class="btn btn-success" title="Submit task for testing">✔ Submit</button>
+            </div>
+          </div>
+          
+          <div class="editor-workspace-area">
+            <div id="lineNumbers" class="line-numbers">1</div>
+            <div class="editor-wrapper">
+              <!-- Overlay highlight element -->
+              <div id="editorHighlight" class="editor-highlight" aria-hidden="true"></div>
+              <!-- Plain text editor input -->
+              <textarea id="editorTextarea" class="editor-textarea" spellcheck="false" autocomplete="off" placeholder="# Type Python code here..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Output Side -->
+        <div class="terminal-container">
+          <div class="panel-header">
+            <span class="panel-title">Interactive Terminal</span>
+          </div>
+          <div id="terminalBody" class="terminal-body">
+            <div class="terminal-welcome">Code to Career Terminal v1.0.0. Ready...</div>
+            <div id="terminalLines"></div>
+            <!-- Input Prompt Line (hidden by default) -->
+            <div id="terminalInputPrompt" class="terminal-input-prompt" style="display: none;">
+              <span id="terminalPromptLabel">>>> </span>
+              <input id="terminalInputField" class="terminal-input-field" type="text" autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Celebration/Success Level Up Modal -->
+  <div id="celebrationModal" class="modal-overlay">
+    <div class="modal-card">
+      <span class="celebration-spark">🏆</span>
+      <h2 id="modalTitle" class="modal-title">Level Completed!</h2>
+      <p id="modalSubtitle" class="modal-subtitle">You have advanced along your coding journey.</p>
+      
+      <div class="modal-rewards">
+        <div class="reward-row">
+          <span class="reward-name">XP Earned:</span>
+          <span id="xpEarnedVal" class="reward-val">+100 XP</span>
+        </div>
+        <div class="reward-row">
+          <span class="reward-name">Developer Title:</span>
+          <span id="rankEarnedVal" class="reward-val" style="color: var(--accent-cyan);">Logic Squire</span>
+        </div>
+        <div id="badgeEarnedRow" class="reward-row" style="display: none; border-top: 1px solid var(--border-color); padding-top: 0.5rem; margin-top: 0.5rem;">
+          <span class="reward-name">Badge Unlocked:</span>
+          <span id="badgeEarnedVal" class="reward-val" style="color: var(--accent-cyan);">📣 Output Pioneer</span>
+        </div>
+      </div>
+      
+      <button id="nextLevelBtn" class="btn btn-primary btn-block">Advance to Next Episode</button>
+    </div>
+  </div>
+
+  <!-- Sound and interpreter modules -->
+  <script type="module" src="app.js?v=3"></script>
+</body>
+</html>
