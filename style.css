@@ -844,10 +844,16 @@ header {
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
+  body {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  
   .app-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
   }
   
   .sidebar {
@@ -855,6 +861,7 @@ header {
     border-right: none;
     border-bottom: 1px solid var(--border-color);
     padding: 1.25rem;
+    overflow: visible;
   }
   
   .path-map {
@@ -884,18 +891,37 @@ header {
   }
   
   .workspace {
-    grid-template-rows: auto 1fr;
-    height: 650px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
   }
   
   .concept-panel {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     padding: 1.25rem;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    height: auto;
+    overflow: visible;
   }
   
   .editor-terminal-split {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+  
+  .editor-container {
+    height: 420px;
+    overflow: hidden;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .terminal-container {
+    height: 320px;
+    overflow: hidden;
   }
 }
